@@ -1,19 +1,9 @@
 # tfpu-webapl-zad02
 
-## Project setup
-```
-npm install
-```
+**Autor:** Enrico Kokot
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+**JMBAG**: 0009068626
 
-### Compiles and minifies for production
-```
-npm run build
-```
+**Kolegij**: Web aplikacije
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+**Opis zadatka**: Zadatak je poslati zahtjev u obliku imena na tri endpointa i na temelju tog zahtjeva prikazati sve podatke u tablici.
