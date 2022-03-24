@@ -4,7 +4,7 @@
       <v-text-field label="Ime" @change="getAll($event)" />
       <v-data-table
         :headers="headers"
-        :items="allData"
+        :items="newData"
         :items-per-page="5"
         class="elevation-1"
       ></v-data-table>
@@ -21,6 +21,7 @@ export default {
     genderData: {},
     nationalityData: {},
     allData: [],
+    newData: [],
     headers: [
       {
         text: "Ime",
@@ -77,7 +78,7 @@ export default {
         })
       );
 
-      this.allData = array2;
+      array2.forEach((object) => this.newData.push(object));
     },
   },
 };
