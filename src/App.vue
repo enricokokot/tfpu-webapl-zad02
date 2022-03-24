@@ -4,8 +4,8 @@
       <v-text-field label="Ime" @change="getAll($event)" />
       <v-data-table
         :headers="headers"
-        :items="newData"
-        :items-per-page="5"
+        :items="processedData"
+        :items-per-page="9"
         class="elevation-1"
       ></v-data-table>
     </v-main>
@@ -20,8 +20,10 @@ export default {
     ageData: {},
     genderData: {},
     nationalityData: {},
-    allData: [],
-    newData: [],
+
+    unprocessedData: [],
+    processedData: [],
+
     headers: [
       {
         text: "Ime",
@@ -58,17 +60,25 @@ export default {
       this.getGender(value);
       this.getNationality(value);
 
-      let array1 = [];
+      this.unprocessedData = [
+        this.ageData,
+        this.genderData,
+        this.nationalityData,
+      ];
 
-      this.allData = [this.ageData, this.genderData, this.nationalityData];
-      this.allData = this.allData[2].country.forEach((country) =>
-        array1.push([this.allData[0], this.allData[1], country])
+      let halfProcessedData = [];
+
+      this.unprocessedData = this.unprocessedData[2].country.forEach(
+        (country) =>
+          halfProcessedData.push([
+            this.unprocessedData[0],
+            this.unprocessedData[1],
+            country,
+          ])
       );
 
-      let array2 = [];
-
-      array1.forEach((array) =>
-        array2.push({
+      halfProcessedData.forEach((array) =>
+        this.processedData.push({
           name: array[0].name,
           age: array[0].age,
           gender: array[1].gender,
@@ -77,8 +87,6 @@ export default {
           "probability of country": array[2].probability,
         })
       );
-
-      array2.forEach((object) => this.newData.push(object));
     },
   },
 };
