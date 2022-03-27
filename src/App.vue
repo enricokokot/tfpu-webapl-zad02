@@ -40,25 +40,25 @@ export default {
   }),
 
   methods: {
-    getAge(value) {
-      fetch("https://api.agify.io?name=" + value)
+    async getAge(value) {
+      await fetch("https://api.agify.io?name=" + value)
         .then((response) => response.json())
         .then((data) => (this.ageData = data));
     },
-    getGender(value) {
-      fetch("https://api.genderize.io?name=" + value)
+    async getGender(value) {
+      await fetch("https://api.genderize.io?name=" + value)
         .then((response) => response.json())
         .then((data) => (this.genderData = data));
     },
-    getNationality(value) {
-      fetch("https://api.nationalize.io?name=" + value)
+    async getNationality(value) {
+      await fetch("https://api.nationalize.io?name=" + value)
         .then((response) => response.json())
         .then((data) => (this.nationalityData = data));
     },
-    getAll(value) {
-      this.getAge(value);
-      this.getGender(value);
-      this.getNationality(value);
+    async getAll(value) {
+      await this.getAge(value);
+      await this.getGender(value);
+      await this.getNationality(value);
 
       this.unprocessedData = [
         this.ageData,
